@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "frontbacked-server --port 3000 --sqlite",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,8 @@
     "url": "https://github.com/feyi-tech/frontbacked-wigstyling-theme/issues"
   },
   "homepage": "https://github.com/feyi-tech/frontbacked-wigstyling-theme#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
 }
