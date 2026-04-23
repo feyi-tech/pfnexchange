@@ -370,6 +370,7 @@ nav {
     transform: translateY(-8px) rotate(-45deg);
 }
 
+
 @media (max-width: 950px) {
     .menu-toggle { display: block; }
     .nav-links {
@@ -394,6 +395,9 @@ nav {
     .hero-content p { margin: 0 auto 40px; }
 }
 
+@media (min-width: 951px) {
+    .mobile-only { display: none; }
+}
 /* --- Footer --- */
 footer {
     padding: 80px 8% 40px;
