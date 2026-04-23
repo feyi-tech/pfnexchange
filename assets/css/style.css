@@ -1,0 +1,310 @@
+:root {
+    --gold: #d4af37;
+    --light-gold: #f4e0a1;
+    --black: #0a0a0a;
+    --dark-gray: #151515;
+    --white: #ffffff;
+    --purple-accent: #2e1031;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .brand-name {
+    font-family: 'Playfair Display', serif;
+}
+
+.gold-text {
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--gold);
+}
+
+/* --- Navigation --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+    background: rgba(10, 10, 10, 0.98);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-circle {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--gold);
+}
+
+.cta-btn {
+    background: linear-gradient(45deg, var(--gold), var(--light-gold));
+    color: var(--black) !important;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    transition: var(--transition);
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* --- Hero --- */
+.hero {
+    height: 100vh;
+    background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1595475243692-3925209f029a?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+}
+
+.hero-content { max-width: 650px; }
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 25px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+/* --- Services --- */
+.services { padding: 100px 8%; text-align: center; }
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+    letter-spacing: 4px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: var(--dark-gray);
+    padding: 40px 20px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: var(--transition);
+    border-radius: 8px;
+}
+
+.service-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-8px);
+    background: #1c1c1c;
+}
+
+.service-card i {
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+/* --- Contact --- */
+.contact {
+    background: var(--dark-gray);
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.info-item {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-item i { color: var(--gold); font-size: 1.2rem; }
+.info-item a { color: var(--white); text-decoration: none; transition: var(--transition); }
+.info-item a:hover { color: var(--gold); }
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 15px;
+    background: #222;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 4px;
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold);
+    border: none;
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* --- Mobile Menu Styles --- */
+.menu-toggle { display: none; cursor: pointer; }
+.bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--gold); transition: var(--transition); }
+
+@media (max-width: 850px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: var(--black);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        padding: 40px 0;
+        border-bottom: 1px solid var(--gold);
+    }
+    .nav-links.active { left: 0; }
+    .desktop-only { display: none; }
+    .contact { grid-template-columns: 1fr; }
+    .hero { text-align: center; justify-content: center; }
+    .hero-btns { flex-direction: column; }
+}
+
+/* --- Footer Section --- */
+footer {
+    padding: 60px 8% 30px;
+    text-align: center;
+    background-color: var(--black);
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.footer-logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-style: italic;
+    color: #888;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.6rem;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    color: var(--gold);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid #1a1a1a;
+    padding-top: 25px;
+}
+
+/* --- Animation for the Mobile Menu (Used in JS) --- */
+.bar.rotate-down {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.bar.fade-out {
+    opacity: 0;
+}
+
+.bar.rotate-up {
+    transform: translateY(-8px) rotate(-45deg);
+}
