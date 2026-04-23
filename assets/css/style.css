@@ -20,7 +20,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Bodoni Moda', serif;
     background-color: var(--black);
     color: var(--white);
     line-height: 1.7;
@@ -28,8 +28,8 @@ body {
 }
 
 h1, h2, h3, .brand-name {
-    font-family: 'Playfair Display', serif;
-    letter-spacing: 1px;
+    font-family: 'Cinzel Decorative', cursive;
+    letter-spacing: 2px;
 }
 
 .gold-text {
@@ -40,6 +40,7 @@ h1, h2, h3, .brand-name {
     -webkit-text-fill-color: transparent;
     color: var(--gold);
     display: inline-block;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 0 0 20px rgba(255, 0, 255, 0.3);
 }
 
 /* --- Navigation --- */
@@ -48,13 +49,13 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(15px);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
 }
 
 .logo-container {
@@ -108,17 +109,24 @@ nav {
     transition: var(--transition);
     border: none;
     cursor: pointer;
+    animation: cta-pulse 3s infinite;
+}
+
+@keyframes cta-pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
 }
 
 .cta-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(212, 175, 55, 0.6);
 }
 
 /* --- Hero --- */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/images/banner.jpg');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -191,9 +199,10 @@ nav {
 }
 
 .service-card {
-    background: var(--dark-gray);
+    background: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(5px);
     padding: 50px 30px;
-    border: 1px solid rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
@@ -214,6 +223,7 @@ nav {
 .service-card:hover {
     border-color: var(--gold);
     transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2), 0 0 40px rgba(255, 0, 255, 0.1);
 }
 
 .service-card:hover::after {
@@ -303,9 +313,11 @@ nav {
 .info-item a:hover { color: var(--gold); }
 
 .contact-form {
-    background: #1a1a1a;
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(15px);
     padding: 50px;
-    border: 1px solid rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 4px;
 }
 
 .contact-form input, .contact-form textarea {
