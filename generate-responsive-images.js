@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const servicesDir = path.join(__dirname, 'assets/images/services');
+const servicesDir = 'assets/images/services';//path.join(__dirname, 'assets/images/services');
 
 // matches: -480w.png, -720w.jpg, etc
 const responsivePattern = /-\d+w\.(png|jpe?g|webp|gif|svg)$/i;
