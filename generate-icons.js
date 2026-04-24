@@ -2,7 +2,7 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const inputSvg = 'assets/icons/logo.svg';
+const inputSvg = 'assets/icons/logo.png';
 const outputDir = 'assets/icons';
 
 const sizes = [

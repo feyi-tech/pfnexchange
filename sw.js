@@ -1,27 +1,36 @@
-const CACHE_NAME = 'lushycrown-dynamic-v2';
+const CACHE_NAME = 'wigstyling-v4';
 
-// Install
+// ---------------------------
+// INSTALL → activate immediately
+// ---------------------------
 self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
-// Activate → clean old caches
+// ---------------------------
+// ACTIVATE → delete ALL old caches
+// ---------------------------
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(
-        keys.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      )
+      Promise.all(keys.map(key => caches.delete(key)))
     )
   );
   self.clients.claim();
 });
 
-// Fetch handler
+// ---------------------------
+// FORCE UPDATE FROM CLIENT
+// ---------------------------
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
+// ---------------------------
+// FETCH HANDLER
+// ---------------------------
 self.addEventListener('fetch', event => {
   const request = event.request;
   const url = new URL(request.url);
@@ -29,28 +38,54 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return;
 
   // ---------------------------
-  // 1. HTML → NETWORK FIRST
+  // 1. HTML → ALWAYS NETWORK (CRITICAL FIX)
   // ---------------------------
   if (request.mode === 'navigate') {
     event.respondWith(
-      fetch(request)
-        .then(response => response)
+      fetch(request, { cache: 'no-store' }) // 🚀 FORCE fresh HTML
         .catch(() => caches.match('/index.html'))
     );
     return;
   }
 
   // ---------------------------
-  // 2. Google Fonts → CACHE FIRST (they rarely change)
+  // 2. JS & CSS → NETWORK FIRST (NO STALE UI)
   // ---------------------------
-  if (url.origin.includes('fonts.googleapis.com') || url.origin.includes('fonts.gstatic.com')) {
+  if (
+    request.destination === 'script' ||
+    request.destination === 'style'
+  ) {
+    event.respondWith(
+      fetch(request)
+        .then(res => {
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, resClone);
+          });
+          return res;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+
+  // ---------------------------
+  // 3. Google Fonts → CACHE FIRST
+  // ---------------------------
+  if (
+    url.origin.includes('fonts.googleapis.com') ||
+    url.origin.includes('fonts.gstatic.com')
+  ) {
     event.respondWith(
       caches.match(request).then(cached => {
-        return cached || fetch(request).then(res => {
-          return caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, res.clone());
-            return res;
+        if (cached) return cached;
+
+        return fetch(request).then(res => {
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, resClone);
           });
+          return res;
         });
       })
     );
@@ -58,62 +93,55 @@ self.addEventListener('fetch', event => {
   }
 
   // ---------------------------
-  // 3. CDN (Cloudflare, etc.) → STALE WHILE REVALIDATE
+  // 4. CDN → NETWORK FIRST (avoid stale libs)
   // ---------------------------
   if (url.origin.includes('cdnjs.cloudflare.com')) {
     event.respondWith(
-      caches.match(request).then(cached => {
-        const fetchPromise = fetch(request).then(res => {
-          return caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, res.clone());
-            return res;
+      fetch(request)
+        .then(res => {
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, resClone);
           });
-        });
-
-        return cached || fetchPromise;
-      })
+          return res;
+        })
+        .catch(() => caches.match(request))
     );
     return;
   }
 
   // ---------------------------
-  // 4. Images (including Unsplash) → CACHE FIRST (with fallback)
+  // 5. Images → CACHE FIRST
   // ---------------------------
   if (request.destination === 'image') {
     event.respondWith(
       caches.match(request).then(cached => {
-        return (
-          cached ||
-          fetch(request)
-            .then(res => {
-              return caches.open(CACHE_NAME).then(cache => {
-                // works even for opaque responses (no-cors)
-                cache.put(request, res.clone());
-                return res;
-              });
-            })
-            .catch(() => cached)
-        );
+        if (cached) return cached;
+
+        return fetch(request).then(res => {
+          const resClone = res.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(request, resClone);
+          });
+          return res;
+        });
       })
     );
     return;
   }
 
   // ---------------------------
-  // 5. Default → STALE WHILE REVALIDATE
+  // 6. EVERYTHING ELSE → NETWORK FIRST
   // ---------------------------
   event.respondWith(
-    caches.match(request).then(cached => {
-      const fetchPromise = fetch(request)
-        .then(res => {
-          return caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, res.clone());
-            return res;
-          });
-        })
-        .catch(() => cached);
-
-      return cached || fetchPromise;
-    })
+    fetch(request)
+      .then(res => {
+        const resClone = res.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(request, resClone);
+        });
+        return res;
+      })
+      .catch(() => caches.match(request))
   );
 });

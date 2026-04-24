@@ -19,7 +19,7 @@
 
     <nav>
         <div class="logo-container">
-            <img src="/assets/icons/logo.svg" alt="Lushy Crown Logo" class="logo-img">
+            <img src="/assets/icons/logo.png" alt="Lushy Crown Logo" class="logo-img">
             <span class="brand-name gold-text">Lushy Crown</span>
         </div>
 
@@ -53,6 +53,37 @@
         </div>
     </header>
 
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Our <span class="gold-text">Work</span></h2>
+        <p class="section-subtitle">Stunning transformations on display</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/assets/images/services/wigs-design.png" alt="Styled Wig 5">
+                <div class="gallery-overlay"><span>Wigs Computer Aided Design</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="/assets/images/services/coloring.png" alt="Styled Wig 1">
+                <div class="gallery-overlay"><span>Wigs & Hair Coloring</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="/assets//images/services/machining.png" alt="Styled Wig 2">
+                <div class="gallery-overlay"><span>Machine Wigging</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="/assets/images/services/revamping.png" alt="Styled Wig 3">
+                <div class="gallery-overlay"><span>Wigs Revamping</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="/assets/images/services/wigs-combing.png" alt="Styled Wig 4">
+                <div class="gallery-overlay"><span>Wigs Styling</span></div>
+            </div>
+            <div class="gallery-item">
+                <img src="/assets/images/services/deep-cleaning.png" alt="Styled Wig 5">
+                <div class="gallery-overlay"><span>Wigs Customization</span></div>
+            </div>
+        </div>
+    </section>
+
     <section class="services" id="services">
         <h2 class="section-title">Our <span class="gold-text">Services</span></h2>
         <p class="section-subtitle">Excellence in every strand</p>
@@ -81,29 +112,6 @@
                 <i class="fas fa-pump-soap"></i>
                 <h3>Maintenance</h3>
                 <p>Dedicated care to preserve your crown's longevity.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery" id="gallery">
-        <h2 class="section-title">Our <span class="gold-text">Work</span></h2>
-        <p class="section-subtitle">Stunning transformations on display</p>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80" alt="Styled Wig 1">
-                <div class="gallery-overlay"><span>Luxury Wave</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=800&q=80" alt="Styled Wig 2">
-                <div class="gallery-overlay"><span>Sleek Straight</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=80" alt="Styled Wig 3">
-                <div class="gallery-overlay"><span>Regal Curls</span></div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?auto=format&fit=crop&w=800&q=80" alt="Styled Wig 4">
-                <div class="gallery-overlay"><span>Classic Bob</span></div>
             </div>
         </div>
     </section>
@@ -154,7 +162,7 @@
     </section>
 
     <footer>
-        <img src="/assets/icons/logo.svg" alt="Lushy Crown Logo" class="footer-logo">
+        <img src="/assets/icons/logo.png" alt="Lushy Crown Logo" class="footer-logo">
         <p class="tagline">Luxury Hair. Lasting Confidence.</p>
         
         <div class="social-links">
@@ -171,6 +179,7 @@
 
     <script src="/assets/js/main.js"></script>
     <script>
+        /*
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -178,7 +187,7 @@
                     .then(reg => console.log('Service Worker registered', reg))
                     .catch(err => console.log('Service Worker registration failed', err));
             });
-        }
+        }*/
 
         // PWA Install Prompt
         let deferredPrompt;

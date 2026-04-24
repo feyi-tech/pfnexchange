@@ -5,7 +5,7 @@ const requiredFiles = [
   'index.html',
   'manifest.json',
   'sw.js',
-  'assets/icons/logo.svg',
+  'assets/icons/logo.png',
   'assets/icons/logo-64.png',
   'assets/icons/logo-512.png',
   'assets/icons/logo-1024.png',
