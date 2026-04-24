@@ -126,12 +126,24 @@ nav {
 /* --- Hero --- */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/images/hero.png');
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/images/hero-1200w.png');
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     padding: 0 8%;
+}
+
+@media (max-width: 800px) {
+    .hero {
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/images/hero-800w.png');
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/assets/images/hero-480w.png');
+    }
 }
 
 .hero-content { max-width: 700px; }

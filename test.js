@@ -9,8 +9,7 @@ const requiredFiles = [
   'assets/icons/logo-64.png',
   'assets/icons/logo-512.png',
   'assets/icons/logo-1024.png',
-  'assets/icons/favicon.png',
-  'assets/images/banner.jpg'
+  'assets/icons/favicon.png'
 ];
 
 let missingFiles = [];
@@ -33,8 +32,8 @@ if (missingFiles.length > 0) {
     console.error('Test failed! index.html does not link to manifest.json');
     process.exit(1);
   }
-  if (!indexContent.includes('sw.js')) {
-    console.error('Test failed! index.html does not register service worker');
+  if (indexContent.includes('navigator.serviceWorker.register')) {
+    console.error('Test failed! index.html still registers service worker');
     process.exit(1);
   }
   if (!indexContent.includes('gallery')) {

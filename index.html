@@ -57,30 +57,85 @@
         <h2 class="section-title">Our <span class="gold-text">Work</span></h2>
         <p class="section-subtitle">Stunning transformations on display</p>
         <div class="gallery-grid">
+
             <div class="gallery-item">
-                <img src="/assets/images/services/wigs-design.png" alt="Styled Wig 5">
+                <img 
+                    src="/assets/images/services/wigs-design.png"
+                    srcset="
+                        /assets/images/services/wigs-design-480w.png 480w,
+                        /assets/images/services/wigs-design-800w.png 800w,
+                        /assets/images/services/wigs-design-1200w.png 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
+                    alt="Wigs Computer Aided Design"
+                    loading="lazy">
                 <div class="gallery-overlay"><span>Wigs Computer Aided Design</span></div>
             </div>
+
             <div class="gallery-item">
-                <img src="/assets/images/services/coloring.png" alt="Styled Wig 1">
+                <img 
+                    src="/assets/images/services/coloring.png"
+                    srcset="
+                        /assets/images/services/coloring-480w.png 480w,
+                        /assets/images/services/coloring-800w.png 800w,
+                        /assets/images/services/coloring-1200w.png 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
+                    alt="Wigs and Hair Coloring Service"
+                    loading="lazy">
                 <div class="gallery-overlay"><span>Wigs & Hair Coloring</span></div>
             </div>
+
             <div class="gallery-item">
-                <img src="/assets//images/services/machining.png" alt="Styled Wig 2">
+                <img 
+                    src="/assets/images/services/machining.png"
+                    srcset="
+                        /assets/images/services/machining-480w.png 480w,
+                        /assets/images/services/machining-800w.png 800w,
+                        /assets/images/services/machining-1200w.png 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
+                    alt="Machine Wigging Process"
+                    loading="lazy">
                 <div class="gallery-overlay"><span>Machine Wigging</span></div>
             </div>
+
             <div class="gallery-item">
-                <img src="/assets/images/services/revamping.png" alt="Styled Wig 3">
+                <img 
+                    src="/assets/images/services/revamping.png"
+                    srcset="
+                        /assets/images/services/revamping-480w.png 480w,
+                        /assets/images/services/revamping-800w.png 800w,
+                        /assets/images/services/revamping-1200w.png 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
+                    alt="Wig Revamping and Restoration"
+                    loading="lazy">
                 <div class="gallery-overlay"><span>Wigs Revamping</span></div>
             </div>
+
             <div class="gallery-item">
-                <img src="/assets/images/services/wigs-combing.png" alt="Styled Wig 4">
+                <img 
+                    src="/assets/images/services/wigs-combing.png"
+                    srcset="
+                        /assets/images/services/wigs-combing-480w.png 480w,
+                        /assets/images/services/wigs-combing-800w.png 800w,
+                        /assets/images/services/wigs-combing-1200w.png 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
+                    alt="Wigs Styling and Combing"
+                    loading="lazy">
                 <div class="gallery-overlay"><span>Wigs Styling</span></div>
             </div>
+
             <div class="gallery-item">
-                <img src="/assets/images/services/deep-cleaning.png" alt="Styled Wig 5">
+                <img 
+                    src="/assets/images/services/deep-cleaning.png"
+                    srcset="
+                        /assets/images/services/deep-cleaning-480w.png 480w,
+                        /assets/images/services/deep-cleaning-800w.png 800w,
+                        /assets/images/services/deep-cleaning-1200w.png 1200w"
+                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
+                    alt="Deep Cleaning and Wig Customization"
+                    loading="lazy">
                 <div class="gallery-overlay"><span>Wigs Customization</span></div>
             </div>
+
         </div>
     </section>
 
@@ -179,12 +234,12 @@
 
     <script src="/assets/js/main.js"></script>
     <script>
-        // Service Worker Registration
+        // Service Worker Unregistration (Completely removed caching)
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then(reg => console.log('Service Worker registered', reg))
-                    .catch(err => console.log('Service Worker registration failed', err));
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                for (let registration of registrations) {
+                    registration.unregister();
+                }
             });
         }
 
