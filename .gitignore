@@ -3,3 +3,4 @@ dist/
 .DS_Store
 .frontbacked/
 package-lock.json
+assets/images/**/*-[0-9]*w.*
