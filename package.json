@@ -26,6 +26,7 @@
   "homepage": "https://github.com/feyi-tech/frontbacked-wigstyling-theme#readme",
   "description": "",
   "dependencies": {
+    "qrcode": "^1.5.4",
     "sharp": "^0.34.5"
   }
 }
