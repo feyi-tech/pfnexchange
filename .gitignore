@@ -4,3 +4,6 @@ dist/
 .frontbacked/
 package-lock.json
 assets/images/**/*-[0-9]*w.*
+.secrets/
+.admin-otp.env
+.pass-reset-otp.env

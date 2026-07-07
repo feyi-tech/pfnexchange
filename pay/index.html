@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Checkout</title>
+    <meta name="description" content="Enter your payment amount and contact details.">
+    <meta name="theme-color" content="#285e61">
+    <link rel="stylesheet" href="/assets/css/pay.css">
+</head>
+<body>
+    <main class="payment-shell">
+        <section class="payment-intro" aria-labelledby="payment-title">
+            <p class="eyebrow">Secure checkout</p>
+            <h1 id="payment-title">Payment Details</h1>
+            <p class="intro-copy">Choose your currency, enter the amount, and complete your payment details below.</p>
+        </section>
+
+        <section class="payment-panel" aria-label="Payment form">
+            <form id="paymentForm" class="payment-form" novalidate>
+                <div class="field-group">
+                    <label for="currency">Currency</label>
+                    <select id="currency" name="currency" required>
+                        <option value="NGN">NGN - Nigerian naira</option>
+                        <option value="GHS" selected>GHS - Ghanaian cedi</option>
+                        <option value="USD">USD - US dollar</option>
+                        <option value="GBP">GBP - British pound</option>
+                        <option value="EUR">EUR - Euro</option>
+                        <option value="CAD">CAD - Canadian dollar</option>
+                        <option value="AED">AED - UAE dirham</option>
+                        <option value="AUD">AUD - Australian dollar</option>
+                        <option value="ZAR">ZAR - South African rand</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label for="amount">Amount</label>
+                    <div class="amount-control">
+                        <span id="currencyCode" aria-hidden="true">GHS</span>
+                        <input
+                            id="amount"
+                            name="amount"
+                            type="text"
+                            inputmode="decimal"
+                            autocomplete="off"
+                            placeholder="0.00"
+                            required>
+                    </div>
+                </div>
+
+                <div class="name-grid">
+                    <div class="field-group">
+                        <label for="firstName">First name</label>
+                        <input
+                            id="firstName"
+                            name="firstName"
+                            type="text"
+                            autocomplete="given-name"
+                            placeholder="First name"
+                            required>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="lastName">Last name</label>
+                        <input
+                            id="lastName"
+                            name="lastName"
+                            type="text"
+                            autocomplete="family-name"
+                            placeholder="Last name"
+                            required>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="email">Email address</label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autocomplete="email"
+                        placeholder="name@mail.com"
+                        required>
+                </div>
+
+                <button type="submit" class="pay-button">
+                    <span>Pay</span>
+                    <span id="payAmount">GHS 0.00</span>
+                </button>
+
+                <p id="paymentMessage" class="payment-message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <script src="https://checkout.flutterwave.com/v3.js"></script>
+    <script src="/assets/js/pay.js"></script>
+</body>
+</html>
