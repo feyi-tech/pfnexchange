@@ -245,29 +245,63 @@ select {
 }
 
 @media (max-width: 560px) {
+    body {
+        min-height: 100dvh;
+    }
+
     .payment-shell {
         width: 100%;
+        min-height: 100dvh;
         padding: 0;
     }
 
     .payment-intro {
-        min-height: 210px;
-        padding: 36px 24px 72px;
+        min-height: auto;
+        padding: 18px 20px 46px;
         background: linear-gradient(135deg, var(--primary-dark), var(--primary));
         color: #fff;
+        text-align: center;
     }
 
     .eyebrow {
+        margin: 0;
         color: #ffbe8f;
+        font-size: 0.72rem;
     }
 
+    .payment-intro h1,
     .intro-copy {
-        color: rgba(255, 255, 255, 0.78);
-        font-size: 1rem;
+        display: none;
+    }
+
+    .field-group {
+        margin-bottom: 12px;
+    }
+
+    .field-group label {
+        margin-bottom: 5px;
+        font-size: 0.82rem;
+    }
+
+    .field-group input,
+    .field-group select {
+        min-height: 44px;
+        border-radius: 5px;
+    }
+
+    .field-group input {
+        padding: 0 12px;
+    }
+
+    .field-group select {
+        padding: 0 38px 0 12px;
+        background-position:
+            calc(100% - 19px) 50%,
+            calc(100% - 13px) 50%;
     }
 
     .payment-panel {
-        margin-top: -48px;
+        margin-top: -28px;
         border-right: 0;
         border-left: 0;
         border-radius: 8px 8px 0 0;
@@ -275,15 +309,40 @@ select {
     }
 
     .payment-form {
-        padding: 28px 24px 34px;
+        padding: 16px 16px 18px;
     }
 
     .name-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
+        gap: 12px;
     }
 
     .amount-control {
-        grid-template-columns: 78px minmax(0, 1fr);
+        grid-template-columns: 72px minmax(0, 1fr);
+        min-height: 44px;
+        border-radius: 5px;
+    }
+
+    .amount-control input {
+        min-height: 42px;
+    }
+
+    .pay-button {
+        min-height: 48px;
+        margin-top: 4px;
+        border-radius: 5px;
+        font-size: 0.95rem;
+    }
+
+    .payment-message {
+        min-height: 20px;
+        margin-top: 10px;
+        font-size: 0.84rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .name-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 }
