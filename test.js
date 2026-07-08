@@ -82,6 +82,10 @@ if (missingFiles.length > 0) {
     console.error('Test failed! pay script must expose Flutterwave config and launch checkout');
     process.exit(1);
   }
+  if (!payScript.includes('PAYMENT_FORM_STORAGE_KEY') || !payScript.includes('localStorage') || !payScript.includes('restoreSavedDetails')) {
+    console.error('Test failed! pay script must persist and restore customer payment details');
+    process.exit(1);
+  }
 
   console.log('Basic content checks passed.');
   process.exit(0);

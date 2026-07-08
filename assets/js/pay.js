@@ -9,11 +9,15 @@ const FLUTTERWAVE_PAYMENT_CONFIG = {
 };
 
 const FLUTTERWAVE_PUBLIC_KEY_PLACEHOLDER = 'FLWPUBK-public-X';
+const PAYMENT_FORM_STORAGE_KEY = 'payment_form_customer_details';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('paymentForm');
     const currency = document.getElementById('currency');
     const amount = document.getElementById('amount');
+    const firstNameInput = document.getElementById('firstName');
+    const lastNameInput = document.getElementById('lastName');
+    const emailInput = document.getElementById('email');
     const currencyCode = document.getElementById('currencyCode');
     const payAmount = document.getElementById('payAmount');
     const message = document.getElementById('paymentMessage');
@@ -53,6 +57,48 @@ document.addEventListener('DOMContentLoaded', () => {
         message.dataset.type = type;
     };
 
+    const readSavedDetails = () => {
+        try {
+            const rawDetails = window.localStorage.getItem(PAYMENT_FORM_STORAGE_KEY);
+            return rawDetails ? JSON.parse(rawDetails) : {};
+        } catch {
+            return {};
+        }
+    };
+
+    const saveDetails = () => {
+        try {
+            window.localStorage.setItem(PAYMENT_FORM_STORAGE_KEY, JSON.stringify({
+                firstName: firstNameInput.value.trim(),
+                lastName: lastNameInput.value.trim(),
+                email: emailInput.value.trim(),
+                currency: currency.value
+            }));
+        } catch {
+            // Keep the payment form usable if storage is unavailable.
+        }
+    };
+
+    const restoreSavedDetails = () => {
+        const savedDetails = readSavedDetails();
+
+        if (typeof savedDetails.firstName === 'string') {
+            firstNameInput.value = savedDetails.firstName;
+        }
+
+        if (typeof savedDetails.lastName === 'string') {
+            lastNameInput.value = savedDetails.lastName;
+        }
+
+        if (typeof savedDetails.email === 'string') {
+            emailInput.value = savedDetails.email;
+        }
+
+        if (typeof savedDetails.currency === 'string' && currency.querySelector(`option[value="${savedDetails.currency}"]`)) {
+            currency.value = savedDetails.currency;
+        }
+    };
+
     amount.addEventListener('input', () => {
         amount.value = amount.value.replace(/[^\d.]/g, '').replace(/(\..*)\./g, '$1');
         setMessage('');
@@ -62,6 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
     currency.addEventListener('change', () => {
         setMessage('');
         formatAmount();
+        saveDetails();
+    });
+
+    [firstNameInput, lastNameInput, emailInput].forEach(input => {
+        input.addEventListener('input', saveDetails);
+        input.addEventListener('change', saveDetails);
     });
 
     form.addEventListener('submit', event => {
@@ -91,9 +143,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
-        const email = document.getElementById('email').value.trim();
+        saveDetails();
+
+        const firstName = firstNameInput.value.trim();
+        const lastName = lastNameInput.value.trim();
+        const email = emailInput.value.trim();
         const selectedCurrency = currency.value;
         const txRef = createTransactionReference();
         let paymentCompleted = false;
@@ -142,5 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.FlutterwaveCheckout(checkoutConfig);
     });
 
+    restoreSavedDetails();
     formatAmount();
 });
