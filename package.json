@@ -1,29 +1,29 @@
 {
-  "name": "frontbacked-wigstyling-theme",
+  "name": "pfnexchange",
   "version": "1.0.0",
   "main": "ls2.js",
   "themeMeta": {
     "releaseNotes": "first release.",
     "type": "major",
     "changes": [
-      "The first release of the wigstyling company theme."
+      "The first release of the pfnexchange theme."
     ]
   },
   "scripts": {
     "build": "node generate-icons.js && node generate-responsive-images.js",
-    "dev": "frontbacked-server --port 3012 --sqlite",
+    "dev": "frontbacked-server --port 3013 --sqlite",
     "test": "node test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/feyi-tech/frontbacked-wigstyling-theme.git"
+    "url": "git+https://github.com/feyi-tech/pfnexchange.git"
   },
   "author": "feyi-tech",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/feyi-tech/frontbacked-wigstyling-theme/issues"
+    "url": "https://github.com/feyi-tech/pfnexchange/issues"
   },
-  "homepage": "https://github.com/feyi-tech/frontbacked-wigstyling-theme#readme",
+  "homepage": "https://github.com/feyi-tech/pfnexchange#readme",
   "description": "",
   "dependencies": {
     "qrcode": "^1.5.4",

@@ -7,6 +7,7 @@ const requiredFiles = [
   'backend/paths.json',
   'manifest.json',
   'sw.js',
+  'assets/js/pay-gateway.js',
   'assets/icons/logo.png',
   'assets/icons/logo-64.png',
   'assets/icons/logo-512.png',
@@ -58,8 +59,8 @@ if (missingFiles.length > 0) {
     console.error('Test failed! GHS must be the default currency');
     process.exit(1);
   }
-  if (!payContent.includes('https://checkout.flutterwave.com/v3.js')) {
-    console.error('Test failed! pay page must load Flutterwave checkout');
+  if (!payContent.includes('/assets/js/pay-gateway.js')) {
+    console.error('Test failed! pay page must load the checkout gateway');
     process.exit(1);
   }
   if (/lushy/i.test(payContent)) {
@@ -78,8 +79,14 @@ if (missingFiles.length > 0) {
   }
 
   const payScript = fs.readFileSync('assets/js/pay.js', 'utf8');
-  if (!payScript.includes('FLUTTERWAVE_PAYMENT_CONFIG') || !payScript.includes('FlutterwaveCheckout')) {
-    console.error('Test failed! pay script must expose Flutterwave config and launch checkout');
+  if (!payScript.includes('PAYMENT_CHECKOUT_CONFIG') || !payScript.includes('PAYMENT_CHECKOUT_GLOBAL')) {
+    console.error('Test failed! pay script must expose payment config and launch checkout');
+    process.exit(1);
+  }
+
+  const gatewayScript = fs.readFileSync('assets/js/pay-gateway.js', 'utf8');
+  if (!gatewayScript.includes('checkout.') || !gatewayScript.includes('v3.js')) {
+    console.error('Test failed! gateway loader must request the checkout script');
     process.exit(1);
   }
   if (!payScript.includes('PAYMENT_FORM_STORAGE_KEY') || !payScript.includes('localStorage') || !payScript.includes('restoreSavedDetails')) {

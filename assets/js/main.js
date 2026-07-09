@@ -1,42 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('mobile-menu');
     const navLinks = document.querySelector('.nav-links');
+    const bars = document.querySelectorAll('.bar');
+    const nav = document.querySelector('nav');
 
-    // Toggle Mobile Menu
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        
-        // Simple Animation for Hamburger
-        const bars = document.querySelectorAll('.bar');
-        bars[0].classList.toggle('rotate-down');
-        bars[1].classList.toggle('fade-out');
-        bars[2].classList.toggle('rotate-up');
-    });
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
 
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
+            bars[0]?.classList.toggle('rotate-down');
+            bars[1]?.classList.toggle('fade-out');
+            bars[2]?.classList.toggle('rotate-up');
         });
-    });
 
-    // Simple Form Submission Alert
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                bars[0]?.classList.remove('rotate-down');
+                bars[1]?.classList.remove('fade-out');
+                bars[2]?.classList.remove('rotate-up');
+            });
+        });
+    }
+
     const contactForm = document.getElementById('contactForm');
-    if(contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for reaching out to Lushy Crown! We will contact you shortly to reign over your crown.');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert('Thanks for contacting PFN Exchange. Support will help you with your payment request shortly.');
             contactForm.reset();
         });
     }
 
-    // Sticky Nav Shadow on Scroll
-    window.addEventListener('scroll', () => {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 50) {
-            nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.5)';
-        } else {
-            nav.style.boxShadow = 'none';
+    const updateNavState = () => {
+        if (!nav) {
+            return;
         }
-    });
+        nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    };
+
+    updateNavState();
+    window.addEventListener('scroll', updateNavState, { passive: true });
 });

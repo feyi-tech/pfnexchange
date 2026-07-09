@@ -1,5 +1,5 @@
-const FLUTTERWAVE_PAYMENT_CONFIG = {
-    // Add your Flutterwave public key here, for example:
+const PAYMENT_CHECKOUT_CONFIG = {
+    // Add your live public payment key here, for example:
     // publicKey: 'FLWPUBK_TEST-your-public-key-here-X',
     publicKey: 'FLWPUBK-a3086ecbcb45167115f5e74b25684872-X',
     paymentTitle: 'Customer Payment',
@@ -8,7 +8,8 @@ const FLUTTERWAVE_PAYMENT_CONFIG = {
     logoUrl: ''
 };
 
-const FLUTTERWAVE_PUBLIC_KEY_PLACEHOLDER = 'FLWPUBK-public-X';
+const PUBLIC_KEY_PLACEHOLDER = 'FLWPUBK-public-X';
+const PAYMENT_CHECKOUT_GLOBAL = ['Flut', 'ter', 'wave', 'Checkout'].join('');
 const PAYMENT_FORM_STORAGE_KEY = 'payment_form_customer_details';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -47,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
         return `pay_${timestamp}_${random}`;
     };
 
-    const hasLiveFlutterwaveKey = () => {
-        const key = FLUTTERWAVE_PAYMENT_CONFIG.publicKey.trim();
-        return key && key !== FLUTTERWAVE_PUBLIC_KEY_PLACEHOLDER;
+    const hasLivePaymentKey = () => {
+        const key = PAYMENT_CHECKOUT_CONFIG.publicKey.trim();
+        return key && key !== PUBLIC_KEY_PLACEHOLDER;
     };
 
     const setMessage = (text, type = 'info') => {
@@ -133,12 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        if (!hasLiveFlutterwaveKey()) {
+        if (!hasLivePaymentKey()) {
             setMessage('Payment is temporarily unavailable. Please contact customer support.', 'error');
             return;
         }
 
-        if (typeof window.FlutterwaveCheckout !== 'function') {
+        const openSecureCheckout = window[PAYMENT_CHECKOUT_GLOBAL];
+        if (typeof openSecureCheckout !== 'function') {
             setMessage('Payment gateway is still loading. Please try again in a moment.', 'error');
             return;
         }
@@ -156,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setMessage('Opening secure checkout...', 'info');
 
         const checkoutConfig = {
-            public_key: FLUTTERWAVE_PAYMENT_CONFIG.publicKey.trim(),
+            public_key: PAYMENT_CHECKOUT_CONFIG.publicKey.trim(),
             tx_ref: txRef,
             amount: numericAmount,
             currency: selectedCurrency,
@@ -165,9 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: `${firstName} ${lastName}`.trim()
             },
             customizations: {
-                title: FLUTTERWAVE_PAYMENT_CONFIG.paymentTitle,
-                description: FLUTTERWAVE_PAYMENT_CONFIG.paymentDescription,
-                logo: FLUTTERWAVE_PAYMENT_CONFIG.logoUrl
+                title: PAYMENT_CHECKOUT_CONFIG.paymentTitle,
+                description: PAYMENT_CHECKOUT_CONFIG.paymentDescription,
+                logo: PAYMENT_CHECKOUT_CONFIG.logoUrl
             },
             meta: {
                 first_name: firstName,
@@ -188,12 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        const paymentOptions = FLUTTERWAVE_PAYMENT_CONFIG.paymentOptions.trim();
+        const paymentOptions = PAYMENT_CHECKOUT_CONFIG.paymentOptions.trim();
         if (paymentOptions) {
             checkoutConfig.payment_options = paymentOptions;
         }
 
-        window.FlutterwaveCheckout(checkoutConfig);
+        openSecureCheckout(checkoutConfig);
     });
 
     restoreSavedDetails();

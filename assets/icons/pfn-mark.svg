@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">PFN Exchange</title>
+  <desc id="desc">Blue PFN Exchange logo mark</desc>
+  <defs>
+    <linearGradient id="bg" x1="62" x2="454" y1="64" y2="448" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0b244f"/>
+      <stop offset="0.48" stop-color="#08296a"/>
+      <stop offset="1" stop-color="#031023"/>
+    </linearGradient>
+    <linearGradient id="stroke" x1="122" x2="390" y1="96" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7ee8ff"/>
+      <stop offset="0.52" stop-color="#2f80ff"/>
+      <stop offset="1" stop-color="#49f0c2"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.196 0 0 0 0 0.502 0 0 0 0 1 0 0 0 0.65 0"/>
+      <feBlend in2="SourceGraphic" mode="screen"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <path d="M128 152h140c52 0 88 32 88 78s-36 78-88 78h-68v62h-72V152Zm72 60v40h62c14 0 23-8 23-20s-9-20-23-20h-62Z" fill="#edf6ff"/>
+  <path d="M151 390h210c18 0 34-10 42-26l33-66" fill="none" stroke="url(#stroke)" stroke-width="28" stroke-linecap="round" filter="url(#glow)"/>
+  <path d="M390 114H180c-18 0-34 10-42 26l-34 68" fill="none" stroke="url(#stroke)" stroke-width="28" stroke-linecap="round" opacity="0.82" filter="url(#glow)"/>
+</svg>

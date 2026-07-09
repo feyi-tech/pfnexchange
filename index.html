@@ -3,238 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lushy Crown | Luxury Wig Revamp & Styling Studio</title>
-    
-    <link rel="icon" type="image/png" href="/assets/icons/favicon.png">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#d4af37">
-    <link rel="apple-touch-icon" href="/assets/icons/logo-512.png">
+    <title>PFN Exchange | Receive Payments From Abroad</title>
+    <meta name="description" content="PFN Exchange helps you receive payments from friends abroad in NGN, GHS, USD, GBP, EUR, CAD, AED, AUD, and ZAR through a secure checkout.">
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/assets/icons/pfn-mark.svg">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#eaf5ff">
+    <link rel="apple-touch-icon" href="/assets/icons/pfn-mark.svg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 
     <nav>
-        <div class="logo-container">
-            <img src="/assets/icons/logo.png" alt="Lushy Crown Logo" class="logo-img">
-            <span class="brand-name gold-text">Lushy Crown</span>
-        </div>
+        <a href="#home" class="logo-container" aria-label="PFN Exchange home">
+            <img src="/assets/icons/pfn-mark.svg" alt="PFN Exchange mark" class="logo-img">
+            <span class="brand-name">PFN Exchange</span>
+        </a>
 
-        <div class="menu-toggle" id="mobile-menu">
+        <button class="menu-toggle" id="mobile-menu" type="button" aria-label="Open navigation" aria-expanded="false">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </div>
+        </button>
 
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#gallery">Our Work</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#contact" class="cta-btn mobile-only">Book Now</a></li>
+            <li><a href="/pay">Receive Money</a></li>
+            <li><a href="#currencies">Currencies</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#why-pfn">Why PFN</a></li>
+            <li><a href="#support">Support</a></li>
+            <li><a href="/pay" class="cta-btn mobile-only"><i class="fas fa-credit-card"></i> Open Checkout</a></li>
         </ul>
-        
-        <a href="#contact" class="cta-btn desktop-only">Book Now</a>
+
+        <a href="/pay" class="cta-btn desktop-only"><i class="fas fa-credit-card"></i> Open Checkout</a>
     </nav>
 
     <header class="hero" id="home">
         <div class="hero-content">
-            <h1 class="gold-text">REDEFINE.<br>RESTORE.<br>REIGN.</h1>
-            <p>Premium wig revamp and styling services that revive beauty, boost confidence, and celebrate you.</p>
+            <span class="eyebrow">Built for international payments</span>
+            <h1>Receive money from friends abroad without the stress.</h1>
+            <p>PFN Exchange gives your sender a simple checkout page where they can choose a supported currency, enter the amount, and pay securely.</p>
+
             <div class="hero-btns">
-                <a href="#services" class="cta-btn">Explore Services</a>
-                <a href="https://wa.me/2349049795829" class="whatsapp-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Us
-                </a>
+                <a href="/pay" class="cta-btn"><i class="fas fa-paper-plane"></i> Receive Payment</a>
+                <a href="#currencies" class="secondary-btn"><i class="fas fa-globe"></i> See Currencies</a>
+            </div>
+
+            <dl class="hero-metrics" aria-label="PFN Exchange supported payment highlights">
+                <div>
+                    <dt>Supported currencies</dt>
+                    <dd>9</dd>
+                </div>
+                <div>
+                    <dt>Checkout type</dt>
+                    <dd>Secure page</dd>
+                </div>
+                <div>
+                    <dt>Best for</dt>
+                    <dd>Friends abroad</dd>
+                </div>
+            </dl>
+        </div>
+
+        <div class="payment-preview" aria-label="Payment checkout preview">
+            <div class="preview-card request-card">
+                <div class="preview-header">
+                    <div>
+                        <span>Payment request</span>
+                        <strong>Friend abroad</strong>
+                    </div>
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <div class="preview-field">
+                    <span>Currency</span>
+                    <strong>GHS - Ghanaian cedi</strong>
+                </div>
+
+                <div class="preview-field amount-field">
+                    <span>Amount</span>
+                    <strong>GHS 500.00</strong>
+                </div>
+
+                <div class="preview-person">
+                    <div class="avatar">AF</div>
+                    <div>
+                        <span>Sender details</span>
+                        <strong>Friend pays securely</strong>
+                    </div>
+                </div>
+
+                <a href="/pay" class="preview-pay">Continue to secure checkout</a>
+            </div>
+
+            <div class="preview-card received-card">
+                <span>Available to collect in</span>
+                <div class="mini-currency-row">
+                    <strong>NGN</strong>
+                    <strong>GHS</strong>
+                    <strong>USD</strong>
+                    <strong>GBP</strong>
+                </div>
+                <p>and 5 more currencies</p>
             </div>
         </div>
     </header>
 
-    <section class="gallery" id="gallery">
-        <h2 class="section-title">Our <span class="gold-text">Work</span></h2>
-        <p class="section-subtitle">Stunning transformations on display</p>
-        <div class="gallery-grid">
-
-            <div class="gallery-item">
-                <img 
-                    src="/assets/images/services/wigs-design.png"
-                    srcset="
-                        /assets/images/services/wigs-design-480w.png 480w,
-                        /assets/images/services/wigs-design-800w.png 800w,
-                        /assets/images/services/wigs-design-1200w.png 1200w"
-                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
-                    alt="Wigs Computer Aided Design"
-                    loading="lazy">
-                <div class="gallery-overlay"><span>Wigs Computer Aided Design</span></div>
+    <main>
+        <section class="currency-section gallery" id="currencies">
+            <div class="section-heading centered">
+                <span class="eyebrow">Supported currencies</span>
+                <h2>Let your sender pay in a currency that works for them.</h2>
+                <p>Choose from popular currencies used across Africa, North America, Europe, the Middle East, and Australia.</p>
             </div>
 
-            <div class="gallery-item">
-                <img 
-                    src="/assets/images/services/coloring.png"
-                    srcset="
-                        /assets/images/services/coloring-480w.png 480w,
-                        /assets/images/services/coloring-800w.png 800w,
-                        /assets/images/services/coloring-1200w.png 1200w"
-                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
-                    alt="Wigs and Hair Coloring Service"
-                    loading="lazy">
-                <div class="gallery-overlay"><span>Wigs & Hair Coloring</span></div>
+            <div class="currency-grid">
+                <a href="/pay" class="currency-card">
+                    <span class="currency-code">NGN</span>
+                    <strong>Nigerian naira</strong>
+                    <small>Collect local payments</small>
+                </a>
+                <a href="/pay" class="currency-card featured">
+                    <span class="currency-code">GHS</span>
+                    <strong>Ghanaian cedi</strong>
+                    <small>Default checkout currency</small>
+                </a>
+                <a href="/pay" class="currency-card">
+                    <span class="currency-code">USD</span>
+                    <strong>US dollar</strong>
+                    <small>For friends in the US</small>
+                </a>
+                <a href="/pay" class="currency-card">
+                    <span class="currency-code">GBP</span>
+                    <strong>British pound</strong>
+                    <small>For friends in the UK</small>
+                </a>
+                <a href="/pay" class="currency-card">
+                    <span class="currency-code">EUR</span>
+                    <strong>Euro</strong>
+                    <small>For friends in Europe</small>
+                </a>
+                <a href="/pay" class="currency-card">
+                    <span class="currency-code">CAD</span>
+                    <strong>Canadian dollar</strong>
+                    <small>For friends in Canada</small>
+                </a>
+                <a href="/pay" class="currency-card">
+                    <span class="currency-code">AED</span>
+                    <strong>UAE dirham</strong>
+                    <small>For friends in the UAE</small>
+                </a>
+                <a href="/pay" class="currency-card">
+                    <span class="currency-code">AUD</span>
+                    <strong>Australian dollar</strong>
+                    <small>For friends in Australia</small>
+                </a>
+                <a href="/pay" class="currency-card">
+                    <span class="currency-code">ZAR</span>
+                    <strong>South African rand</strong>
+                    <small>For friends in South Africa</small>
+                </a>
             </div>
 
-            <div class="gallery-item">
-                <img 
-                    src="/assets/images/services/machining.png"
-                    srcset="
-                        /assets/images/services/machining-480w.png 480w,
-                        /assets/images/services/machining-800w.png 800w,
-                        /assets/images/services/machining-1200w.png 1200w"
-                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
-                    alt="Machine Wigging Process"
-                    loading="lazy">
-                <div class="gallery-overlay"><span>Machine Wigging</span></div>
+            <div class="section-action">
+                <a href="/pay" class="cta-btn"><i class="fas fa-arrow-right"></i> Start Payment Request</a>
+            </div>
+        </section>
+
+        <section class="use-cases" id="why-pfn">
+            <div class="section-heading">
+                <span class="eyebrow">Made for everyday payments</span>
+                <h2>A simple payment link for money coming from abroad.</h2>
+                <p>PFN Exchange focuses on helping everyday people collect payments from family, friends, customers, and supporters outside their country.</p>
             </div>
 
-            <div class="gallery-item">
-                <img 
-                    src="/assets/images/services/revamping.png"
-                    srcset="
-                        /assets/images/services/revamping-480w.png 480w,
-                        /assets/images/services/revamping-800w.png 800w,
-                        /assets/images/services/revamping-1200w.png 1200w"
-                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
-                    alt="Wig Revamping and Restoration"
-                    loading="lazy">
-                <div class="gallery-overlay"><span>Wigs Revamping</span></div>
+            <div class="use-case-grid">
+                <article class="use-case-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Friends and family</h3>
+                    <p>Send your friend the checkout page so they can pay you in one of the supported currencies.</p>
+                    <a href="/pay">Receive from a friend</a>
+                </article>
+                <article class="use-case-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Freelancers</h3>
+                    <p>Collect project payments from clients abroad with clear currency and amount details.</p>
+                    <a href="/pay">Collect a client payment</a>
+                </article>
+                <article class="use-case-card">
+                    <i class="fas fa-store"></i>
+                    <h3>Small businesses</h3>
+                    <p>Let international buyers complete payment through a familiar secure checkout.</p>
+                    <a href="/pay">Accept a business payment</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="steps" id="how-it-works">
+            <div class="section-heading centered">
+                <span class="eyebrow">How it works</span>
+                <h2>Three steps from request to payment.</h2>
             </div>
 
-            <div class="gallery-item">
-                <img 
-                    src="/assets/images/services/wigs-combing.png"
-                    srcset="
-                        /assets/images/services/wigs-combing-480w.png 480w,
-                        /assets/images/services/wigs-combing-800w.png 800w,
-                        /assets/images/services/wigs-combing-1200w.png 1200w"
-                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
-                    alt="Wigs Styling and Combing"
-                    loading="lazy">
-                <div class="gallery-overlay"><span>Wigs Styling</span></div>
+            <div class="steps-grid">
+                <article>
+                    <span>1</span>
+                    <h3>Open the checkout</h3>
+                    <p>Open the PFN Exchange payment page and choose the currency your sender wants to use.</p>
+                </article>
+                <article>
+                    <span>2</span>
+                    <h3>Enter payment details</h3>
+                    <p>Your sender enters the amount, name, and email before continuing.</p>
+                </article>
+                <article>
+                    <span>3</span>
+                    <h3>Complete secure payment</h3>
+                    <p>The secure checkout returns a payment reference after submission.</p>
+                </article>
             </div>
+        </section>
 
-            <div class="gallery-item">
-                <img 
-                    src="/assets/images/services/deep-cleaning.png"
-                    srcset="
-                        /assets/images/services/deep-cleaning-480w.png 480w,
-                        /assets/images/services/deep-cleaning-800w.png 800w,
-                        /assets/images/services/deep-cleaning-1200w.png 1200w"
-                    sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, (max-width: 1400px) 33vw, 280px"
-                    alt="Deep Cleaning and Wig Customization"
-                    loading="lazy">
-                <div class="gallery-overlay"><span>Wigs Customization</span></div>
+        <section class="checkout-band">
+            <div>
+                <span class="eyebrow">Ready when they are</span>
+                <h2>Send your friend straight to the payment page.</h2>
+                <p>Share the payment page, choose the currency, and let them complete payment securely.</p>
             </div>
+            <a href="/pay" class="cta-btn"><i class="fas fa-credit-card"></i> Open Payment Page</a>
+        </section>
 
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <h2 class="section-title">Our <span class="gold-text">Services</span></h2>
-        <p class="section-subtitle">Excellence in every strand</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <i class="fas fa-cut"></i>
-                <h3>Machine Wigging</h3>
-                <p>Expertly crafted wigs for a perfect fit and natural look.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-sync-alt"></i>
-                <h3>Wig Revamping</h3>
-                <p>Bringing your old wigs back to life with premium treatments.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-palette"></i>
-                <h3>Hair Coloring</h3>
-                <p>Vibrant, safe, and professional coloring services.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-wind"></i>
-                <h3>Hair Styling</h3>
-                <p>Sophisticated styling for any occasion.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-pump-soap"></i>
-                <h3>Maintenance</h3>
-                <p>Dedicated care to preserve your crown's longevity.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="contact-info">
-            <h2 class="gold-text">Connect With Us</h2>
-            <p class="subtitle" style="margin-bottom: 40px; color: #888; letter-spacing: 2px;">Your Crown. Our Craft.</p>
-            
-            <div class="info-item">
-                <i class="fas fa-phone"></i>
+        <section class="trust-section">
+            <div class="trust-card">
+                <i class="fas fa-shield-alt"></i>
                 <div>
-                    <h4>Call Us</h4>
-                    <a href="tel:+2349049795829">+234 904 979 5829</a>
+                    <h3>Secure checkout flow</h3>
+                    <p>The payment form keeps the process familiar for international senders.</p>
                 </div>
             </div>
-            <div class="info-item">
-                <i class="fab fa-whatsapp"></i>
+            <div class="trust-card">
+                <i class="fas fa-receipt"></i>
                 <div>
-                    <h4>WhatsApp</h4>
-                    <a href="https://wa.me/2349049795829" target="_blank">Chat with our experts</a>
+                    <h3>Payment reference</h3>
+                    <p>After payment submission, the sender gets a reference that can be shared with support.</p>
                 </div>
             </div>
-            <div class="info-item">
-                <i class="fas fa-envelope"></i>
+            <div class="trust-card">
+                <i class="fas fa-clock"></i>
                 <div>
-                    <h4>Email</h4>
-                    <a href="mailto:hi@lushycrown.com">hi@lushycrown.com</a>
+                    <h3>Fast to understand</h3>
+                    <p>A clear flow for currency, amount, customer details, and checkout.</p>
                 </div>
             </div>
-            <div class="info-item">
-                <i class="fas fa-globe"></i>
-                <div>
-                    <h4>Website</h4>
-                    <span>www.lushycrown.com</span>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <div class="contact-form">
-            <form id="contactForm">
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="5" placeholder="How can we help your crown?" required></textarea>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+        <section class="support" id="support">
+            <div class="contact-info">
+                <span class="eyebrow">Need help?</span>
+                <h2>We can guide your first payment.</h2>
+                <p>If your friend is not sure which currency to choose or how to complete checkout, contact PFN Exchange support.</p>
+
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <a href="mailto:support@pfn.exchange">support@pfn.exchange</a>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <h4>Payment page</h4>
+                        <a href="/pay">www.pfn.exchange/pay</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <label>
+                        <span>Name</span>
+                        <input type="text" placeholder="Your full name" required>
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" placeholder="you@example.com" required>
+                    </label>
+                    <label>
+                        <span>What do you need help with?</span>
+                        <select required>
+                            <option value="">Choose one</option>
+                            <option>Receiving money from abroad</option>
+                            <option>Choosing a currency</option>
+                            <option>Payment reference confirmation</option>
+                            <option>Business payment support</option>
+                        </select>
+                    </label>
+                    <label>
+                        <span>Message</span>
+                        <textarea rows="5" placeholder="Tell us what you want to receive and from which country" required></textarea>
+                    </label>
+                    <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <img src="/assets/icons/logo.png" alt="Lushy Crown Logo" class="footer-logo">
-        <p class="tagline">Luxury Hair. Lasting Confidence.</p>
-        
-        <div class="social-links">
-            <a href="https://instagram.com/lushycrown" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://tiktok.com/@lushycrown" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="#home" class="footer-brand" aria-label="PFN Exchange home">
+            <img src="/assets/icons/pfn-mark.svg" alt="PFN Exchange mark" class="footer-logo">
+            <span>PFN Exchange</span>
+        </a>
+        <p class="tagline">Receive payments from abroad in supported currencies.</p>
+
+        <div class="footer-actions">
+            <a href="/pay">Open checkout</a>
+            <a href="#currencies">Supported currencies</a>
+            <a href="#support">Support</a>
         </div>
-        
+
         <p class="copyright">
-            &copy; 2026 Lushy Crown Wig Revamp & Styling Studio.
+            &copy; 2026 PFN Exchange. All rights reserved.
         </p>
     </footer>
 
-    <button id="installBanner"><i class="fas fa-download"></i> Install App</button>
+    <button id="installBanner" type="button"><i class="fas fa-download"></i> Install PFN</button>
 
     <script src="/assets/js/main.js"></script>
     <script>
-        // Service Worker Unregistration (Completely removed caching)
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.getRegistrations().then(registrations => {
                 for (let registration of registrations) {
@@ -243,23 +342,22 @@
             });
         }
 
-        // PWA Install Prompt
         let deferredPrompt;
         const installBtn = document.getElementById('installBanner');
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
-            installBtn.style.display = 'flex';
+            installBtn.style.display = 'inline-flex';
         });
 
         installBtn.addEventListener('click', () => {
             installBtn.style.display = 'none';
+            if (!deferredPrompt) {
+                return;
+            }
             deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the A2HS prompt');
-                }
+            deferredPrompt.userChoice.then(() => {
                 deferredPrompt = null;
             });
         });
