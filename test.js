@@ -15,6 +15,11 @@ const requiredFiles = [
   'assets/icons/favicon.png'
 ];
 
+const supportedCurrencies = [
+  'NGN', 'GHS', 'USD', 'GBP', 'EUR', 'CAD', 'AED', 'AUD', 'ZAR',
+  'ETB', 'INR', 'KES', 'MWK', 'RWF', 'SLL', 'TZS', 'UGX', 'XAF', 'XOF', 'ZMW'
+];
+
 let missingFiles = [];
 
 requiredFiles.forEach(file => {
@@ -43,13 +48,23 @@ if (missingFiles.length > 0) {
      console.error('Test failed! index.html missing gallery section');
      process.exit(1);
   }
+  if (!indexContent.includes('<dd>20</dd>') || !indexContent.includes('20 supported currencies')) {
+    console.error('Test failed! index.html must show the updated supported currency count');
+    process.exit(1);
+  }
+  supportedCurrencies.forEach(currency => {
+    if (!indexContent.includes(`<span class="currency-code">${currency}</span>`)) {
+      console.error(`Test failed! index.html is missing ${currency} currency card`);
+      process.exit(1);
+    }
+  });
 
   const payContent = fs.readFileSync('pay/index.html', 'utf8');
   if (!payContent.includes('id="currency"') || !payContent.includes('id="amount"') || !payContent.includes('id="email"')) {
     console.error('Test failed! pay page is missing required payment fields');
     process.exit(1);
   }
-  ['NGN', 'GHS', 'USD', 'GBP', 'EUR', 'CAD', 'AED', 'AUD', 'ZAR'].forEach(currency => {
+  supportedCurrencies.forEach(currency => {
     if (!payContent.includes(`value="${currency}"`)) {
       console.error(`Test failed! pay page is missing ${currency} currency option`);
       process.exit(1);

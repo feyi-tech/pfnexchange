@@ -2,7 +2,7 @@
   "url": "https://pfnexchange.com",
   "name": "PFN Exchange",
   "short_name": "PFN Exchange",
-  "description": "Receive payments from friends abroad in supported currencies through a secure checkout.",
+  "description": "Receive payments from friends abroad in 20 supported currencies through a secure checkout.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f3f9ff",
