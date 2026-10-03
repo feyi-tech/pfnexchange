@@ -104,8 +104,8 @@ export default function PaymentPage() {
 
   return (
     <main className="site-shell">
-      <div className="topbar"><span>Welcome to Lushycrown</span><a href="https://www.lushycrown.com/">Continue shopping</a></div>
-      <header className="header"><a className="brand" href="https://www.lushycrown.com/" aria-label="Lushycrown home"><span>LC</span><strong>Lushycrown</strong></a><span className="secure">◌ Secure customer payment</span></header>
+      <div className="topbar"><span>Welcome to Lushycrown</span><a href="https://lushycrown.com/">Continue shopping</a></div>
+      <header className="header"><a className="brand" href="https://lushycrown.com/" aria-label="Lushycrown home"><span>LC</span><strong>Lushycrown</strong></a><span className="secure">◌ Secure customer payment</span></header>
       <section className="checkout" aria-labelledby="payment-title">
         <div className="intro"><p className="eyebrow">CUSTOMER PAYMENT</p><h1 id="payment-title">Complete your payment</h1><p>Pay Lushycrown securely for your order, goods, or services.</p><div className="assurance"><span>✓</span><p><strong>Your details are protected</strong><br />Payments are processed securely by Flutterwave.</p></div></div>
         <form onSubmit={submit} className="payment-form">
