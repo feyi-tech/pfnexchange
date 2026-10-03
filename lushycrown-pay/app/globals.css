@@ -1,0 +1,22 @@
+:root { color: #1b1b1b; background: #fbfaf8; font-family: Arial, Helvetica, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; }
+.site-shell { min-height: 100vh; }
+.topbar { background: #dcae26; color: white; display: flex; justify-content: center; gap: 28px; padding: 11px 20px; font-size: 14px; }
+.topbar a { font-weight: 700; }
+.header { max-width: 1120px; margin: auto; height: 106px; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-size: 21px; letter-spacing: -.4px; }
+.brand span, .initialising-mark { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: #191919; color: #e6b522; font-family: Georgia, serif; font-weight: 700; }
+.secure { color: #6d6d6d; font-size: 14px; }
+.checkout { max-width: 980px; min-height: 590px; margin: 24px auto 52px; display: grid; grid-template-columns: .9fr 1.1fr; background: white; border: 1px solid #e8e5df; box-shadow: 0 12px 36px rgba(30, 25, 15, .08); }
+.intro { padding: 70px 54px; background: #201e1b; color: #fff; }
+.eyebrow, .section-label { margin: 0 0 14px; color: #dcae26; font-size: 11px; letter-spacing: 1.6px; font-weight: 700; }
+h1 { font-size: 39px; line-height: 1.08; margin: 0 0 18px; letter-spacing: -1.2px; }
+.intro > p:not(.eyebrow) { margin: 0; color: #d7d3ce; line-height: 1.6; }
+.assurance { border-top: 1px solid #4a4641; margin-top: 56px; padding-top: 24px; display: flex; gap: 12px; }
+.assurance span { color: #e2b32a; font-size: 21px; }.assurance p { margin: 0; color: #d7d3ce; font-size: 13px; line-height: 1.6; }.assurance strong { color: white; }
+.payment-form { padding: 47px 52px 42px; }.payment-form label { display: block; margin-top: 17px; font-size: 13px; font-weight: 700; }.payment-form input, .payment-form select { width: 100%; margin-top: 8px; min-height: 47px; border: 1px solid #d9d6d0; border-radius: 3px; padding: 0 13px; background: white; font: inherit; font-weight: 400; outline-color: #dcae26; }.optional { color: #8a8782; font-size: 11px; font-weight: 400; }.amount-input { position: relative; }.amount-input span { position: absolute; top: 9px; bottom: 0; left: 13px; display: flex; align-items: center; color: #6d6963; font-size: 13px; }.amount-input input { padding-left: 56px; }.customer-label { border-top: 1px solid #ebe8e2; margin-top: 28px; padding-top: 27px; }.split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }.payment-form button { width: 100%; min-height: 55px; margin-top: 27px; border: 0; border-radius: 3px; color: #fff; background: #d5a619; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; font-size: 15px; }.payment-form button:hover { background: #bf920e; }.payment-form button:disabled { opacity: .7; cursor: wait; }.form-message { min-height: 20px; margin: 13px 0 0; color: #7c5d05; font-size: 13px; line-height: 1.4; }
+footer { padding: 0 20px 38px; text-align: center; color: #706c66; font-size: 13px; } footer a { color: #83600c; font-weight: 700; }
+.initialising { min-height: 100vh; display: grid; place-content: center; justify-items: center; gap: 17px; color: #48433c; font-size: 15px; }.initialising-mark { width: 52px; height: 52px; animation: pulse 1.2s ease-in-out infinite; }.initialising p { margin: 0; }.initialising small { max-width: 300px; text-align: center; color: #8b2d23; line-height: 1.5; }@keyframes pulse { 50% { transform: scale(1.08); opacity: .65; } }
+@media (max-width: 760px) { .topbar { justify-content: space-between; gap: 8px; font-size: 12px; }.header { height: 80px; padding: 0 20px; }.secure { display: none; }.checkout { display: block; margin: 0 14px 34px; }.intro { padding: 39px 30px; }.assurance { margin-top: 32px; }.payment-form { padding: 34px 26px; }h1 { font-size: 32px; }.split { gap: 10px; } }
